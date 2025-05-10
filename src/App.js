@@ -1,13 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState} from "react";
+import "milligram";
 
 function App() {
     const [email, setEmail] = useState('typehere@example.com');
     const [text_box, setBox] = useState(<input type="text" onChange={handleChange}/>);
     const [button, setButton] = useState(<button type="button" onClick={login}>LogIn</button>);
     const [instruction, setInstruction] = useState(<div>Wpisz swoj email żeby zalogować</div>);
-    const [refreshPage, setRefresher] = useState(<button hidden type="button" onClick={logout}>LogOut</button>);
+    const [refreshPage, setRefresher] = useState(<button hidden type="button" style={{display:"none"}} onClick={logout}>LogOut</button>);
     const [flag, setFlag] = useState(false);
 
     function handleChange(event) {
@@ -18,7 +19,7 @@ function App() {
         setFlag(true)
         setInstruction(<div hidden>Wpisz swoj email żeby zalogować</div>)
         setBox(<input hidden type="text" onChange={handleChange}/>)
-        setButton(<button hidden type="button" onClick={login}>LogIn</button>)
+        setButton(<button type="button" style={{display:"none"}} onClick={login}>LogIn</button>)
         setRefresher(<button type="button" onClick={logout}>LogOut</button>)
     }
 
@@ -27,7 +28,7 @@ function App() {
         setInstruction(<div>Wpisz swoj email żeby zalogować</div>)
         setBox(<input type="text" onChange={handleChange}/>)
         setButton(<button type="button" onClick={login}>LogIn</button>)
-        setRefresher(<button hidden type="button" onClick={logout}>LogOut</button>)
+        setRefresher(<button type="button" style={{display:"none"}} onClick={logout}>LogOut</button>)
     }
 
     let message = '';
