@@ -1,10 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
 
 function App() {
-    let email = "mymail@gg.com"
+    const [email, setEmail] = useState('typehere@example.com');
+
     function handleChange(event) {
-        console.log(event.target.value);
+        setEmail(event.target.value);
     }
 
     return (
