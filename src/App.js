@@ -3,6 +3,7 @@ import './App.css';
 import {useState} from "react";
 import "milligram";
 import LoginForm from "./LoginForm";
+import LogoutForm from "./LogoutForm";
 
 
 function App() {
@@ -17,22 +18,14 @@ function App() {
         setLoggedIn(null);
     }
 
-    let content;
-    if (loggedIn) {
-        content = <div>
-            <h2> Witaj {loggedIn}</h2>
-            <button onClick={logout}>Wyloguj</button>
-        </div>
-    } else {
-        content = <LoginForm onLogin={(username) => login(username)}/>;
-    }
-
-
     return (
-        <div >
-            <h1>System do zapisów</h1>
-            {content}
-
+        <div>
+            <h1>System do zapisów na zajęcia</h1>
+            {
+                loggedIn
+                    ? <LogoutForm username={loggedIn} onLogout={logout}/>
+                    : <LoginForm onLogin={login}/>
+            }
         </div>
     );
 }
